@@ -1,0 +1,13 @@
+-- Alterando os nomes das colunas da tabela que vieram automáticamente na importação
+ALTER TABLE broken_database_1 RENAME COLUMN c1 TO data;
+ALTER TABLE broken_database_1 RENAME COLUMN c2 TO id_marca;
+ALTER TABLE broken_database_1 RENAME COLUMN c3 TO vendas;
+ALTER TABLE broken_database_1 RENAME COLUMN c4 TO valor_do_veiculo;
+ALTER TABLE broken_database_1 RENAME COLUMN c5 TO nome;
+ALTER TABLE broken_database_2 RENAME COLUMN c1 TO id_marca;
+alter TABLE broken_database_2 RENAME COLUMN c2 TO marca;
+
+-- Trazendo a tabela unificada que informa os veículo conforme suas marcas
+SELECT data, vendas, valor_do_veiculo, nome, marca FROM broken_database_1
+left JOIN broken_database_2
+ON broken_database_1.id_marca = broken_database_2.id_marca;
